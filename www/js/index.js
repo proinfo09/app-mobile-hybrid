@@ -5,7 +5,21 @@ var db = window.openDatabase('FGW', '1.0', 'FGW', 20000);
 
 // To detect whether users use mobile phones horizontally or vertically.
 $(window).on('orientationchange', onOrientationChange);
+$(window).on('batterystatus', onBatteryStatus);
+$(window).on('batterylow', onBatteryLow);
+$(window).on('batterycritical', onBatteryCritical);
 
+function onBatteryStatus(status) {
+    alert(`Level: ${status.level}%. isPlugged: ${status.isPlugged}.`);
+}
+
+function onBatteryLow(status) {
+    alert(`Battery Level Low ${status.level}%.`);
+}
+
+function onBatteryCritical(status) {
+    alert(`Battery Level Critical ${status.level}%. Recharge Soon!`);
+}
 // Display messages in the console.
 function log(message, type = 'INFO') {
     console.log(`${new Date()} [${type}] ${message}`);
@@ -378,7 +392,7 @@ function registerApartment(e) {
 
         function transactionSuccess(tx, result) {
             log(`Create a Apartment '${apartmentname}' successfully.`);
-
+            alert(`Create a Apartment '${apartmentname}' successfully.`);
             // Reset the form.
             $('#frm-register').trigger('reset');
             $('#page-create #error').empty();
@@ -554,6 +568,7 @@ function deleteApartment(e) {
 
         function transactionSuccess(tx, result) {
             log(`Delete Apartment '${id}' successfully.`);
+            alert(`Delete Apartment '${id}' successfully.`);
 
             $('#page-detail #frm-delete').trigger('reset');
 
@@ -604,7 +619,7 @@ function confirmUpdateApartment(e) {
 
         function transactionSuccess(tx, result) {
             log(`Update Apartment '${id}' successfully.`);
-
+            alert(`Update Apartment '${apartmentname}' successfully.`);
             $('#page-detail').trigger('reset');
 
             $.mobile.navigate('#page-detail', { transition: 'none' });
