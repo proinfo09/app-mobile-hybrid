@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Apartment Rental</title>
+</head>
+
+<body>
+    <!-- PAGE "HOME" -->
+    <div data-role="page" id="page-home">
+        <div data-role="panel" id="mypanel" data-position="right" data-display="push">
+            <!-- panel content goes here -->
+            <h1 style="margin-bottom: 50px;">Menu</h1>
+            <ul data-role="listview" data-icon="false">
+                <li>
+                    <a href="#page-home">
+                        <i class='bx bxs-home' ></i>
+                        <span class="link_name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-create">
+                        <i class='bx bx-plus-medical'></i>
+                        <span class="link_name">Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-list">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">List Properties</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-search">
+                        <i class='bx bx-search-alt' ></i>
+                        <span class="link_name">Search Properties</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="header" data-position="fixed">
+            <div style="justify-content: right; display: flex; margin-right: 5px;">
+                <a id="panel-open" style="border: none; background-color: transparent;"
+                    class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon">Open Panel</a>
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <h1>Home</h1>
+            <div>
+                <div>
+                    <a href="#page-create" data-transition="none"
+                        class="ui-btn ui-alt-icon ui-icon-plus ui-nodisc-icon ui-btn-icon-top">Create Property</a>
+                </div>
+                <div>
+                    <a href="#page-list" data-transition="none"
+                        class="ui-btn ui-alt-icon ui-icon-grid ui-nodisc-icon ui-btn-icon-top">Show List</a>
+                </div>
+                <div>
+                    <a href="#page-search" data-transition="none"
+                        class="ui-btn ui-alt-icon ui-icon-search ui-nodisc-icon ui-btn-icon-top">Search Apartment</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- PAGE "CREATE NEW ACCOUNT" -->
+    <div data-role="page" id="page-create">
+        <div data-role="panel" id="mypanel" data-position="right" data-display="push">
+            <!-- panel content goes here -->
+            <h1 style="margin-bottom: 50px;">Menu</h1>
+            <ul data-role="listview" data-icon="false">
+                <li>
+                    <a href="#page-home">
+                        <i class='bx bxs-home' ></i>
+                        <span class="link_name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-create">
+                        <i class='bx bx-plus-medical'></i>
+                        <span class="link_name">Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-list">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">List Properties</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-search">
+                        <i class='bx bx-search-alt' ></i>
+                        <span class="link_name">Search Properties</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="header" data-position="fixed">
+            <div style="justify-content: right; display: flex; margin-right: 5px;">
+                <a id="panel-open" style="border: none; background-color: transparent;"
+                    class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon">Open Panel</a>
+            </div>
+        </div>
+        <div data-role="main" class="ui-content">
+            <h1>Create Property</h1>
+            <!-- Registration Form -->
+            <form id="frm-register">
+                <span id="error" style="color: red;"></span>
+                <input type="text" placeholder="Apartment Name" id="apartmentname" required>
+                <input type="text" placeholder="Apartment Address" id="address" required>
+
+                <select id="city" required></select>
+                <select id="district" required></select>
+                <select id="ward" required></select>
+
+                <select id="type" required></select>
+                <input id="bedroom" placeholder="Bedrooms" required>
+                <input type="number" placeholder="Monthly rent price" id="price" required>
+                <select id="furniture"></select>
+                <input type="text" placeholder="Note" id="note">
+                <input type="text" placeholder="User Name" id="username" required>
+
+                <button type="submit">Create Property</button>
+            </form>
+
+            <!-- Confirm Registration -->
+            <form data-role="popup" id="frm-confirm" class="ui-content">
+                <div class="ui-field-contain">
+                    <label for="id">Apartment Name</label>
+                    <input type="text" id="apartmentname" readonly>
+
+                    <label for="id">Apartment Address</label>
+                    <input type="text" id="address" readonly>
+
+                    <label for="id">Apartment Type</label>
+                    <input type="text" id="type" readonly>
+
+                    <label for="id">Apartment Bedroom</label>
+                    <input type="text" id="bedroom" readonly>
+
+                    <label for="id">Date Added</label>
+                    <input type="text" id="dateadded" readonly>
+
+                    <label for="id">Monthly rent price</label>
+                    <input type="text" id="price" readonly>
+
+                    <label for="id">Furniture Type</label>
+                    <input type="text" id="furniture" readonly>
+
+                    <label for="id">Note</label>
+                    <input type="text" id="note" readonly>
+
+                    <label for="id">User Name</label>
+                    <input type="text" id="username" readonly>
+                </div>
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a class="ui-btn ui-corner-all" data-rel="back" href="page-create">Cancel</a>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <input type="submit" value="Confirm">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAGE "ACCOUNT LIST" -->
+    <div data-role="page" id="page-list">
+        <div data-role="panel" id="mypanel" data-position="right" data-display="push">
+            <!-- panel content goes here -->
+            <h1 style="margin-bottom: 50px;">Menu</h1>
+            <ul data-role="listview" data-icon="false">
+                <li>
+                    <a href="#page-home">
+                        <i class='bx bxs-home' ></i>
+                        <span class="link_name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-create">
+                        <i class='bx bx-plus-medical'></i>
+                        <span class="link_name">Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-list">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">List Properties</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-search">
+                        <i class='bx bx-search-alt' ></i>
+                        <span class="link_name">Search Properties</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="header" data-position="fixed">
+            <div style="justify-content: right; display: flex; margin-right: 5px;">
+                <a id="panel-open" style="border: none; background-color: transparent;"
+                    class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon">Open Panel</a>
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <!--Display Account List-->
+            <ul id="list-apartment" data-role="listview" class="ui-nodisc-icon ui-alt-icon"></ul>
+        </div>
+    </div>
+
+    <!-- PAGE "ACCOUNT DETAILS" -->
+    <div data-role="page" id="page-detail">
+        <div data-role="panel" id="mypanel" data-position="right" data-display="push">
+            <!-- panel content goes here -->
+            <h1 style="margin-bottom: 50px;">Menu</h1>
+            <ul data-role="listview" data-icon="false">
+                <li>
+                    <a href="#page-home">
+                        <i class='bx bxs-home' ></i>
+                        <span class="link_name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-create">
+                        <i class='bx bx-plus-medical'></i>
+                        <span class="link_name">Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-list">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">List Properties</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-search">
+                        <i class='bx bx-search-alt' ></i>
+                        <span class="link_name">Search Properties</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="header" data-position="fixed">
+            <div id="abc" style="margin-left: 5px;">
+                <a style="border: none; background-color: transparent;" href="#page-list" data-transition="none"
+                    class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-nodisc-icon">Back to list</a>
+            </div>
+            <div style="justify-content: right; display: flex; margin-right: 5px;">
+                <a id="panel-open" style="border: none; background-color: transparent;"
+                    class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon">Open Panel</a>
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <!-- DISPLAY DETAILS -->
+            <img src="img/apartment-building-business-logo-design.jpg" width="100%"><br><br>
+
+            <label for="id">ID</label>
+            <input type="text" id="id" readonly><br>
+
+            <label for="id">Apartment Name</label>
+            <input type="text" id="apartmentname" readonly>
+
+            <label for="id">Apartment Address</label>
+            <input type="text" id="address" readonly>
+
+            <label for="id">Apartment Type</label>
+            <input type="text" id="type" readonly>
+
+            <label for="id">Apartment Bedroom</label>
+            <input type="text" id="bedroom" readonly>
+
+            <label for="id">Date Added</label>
+            <input type="text" id="dateadded" readonly>
+
+            <label for="id">Monthly rent price</label>
+            <input type="text" id="price" readonly>
+
+            <label for="id">Furniture Type</label>
+            <input type="text" id="furniture" readonly>
+
+            <label for="id">Note</label>
+            <input type="text" id="note" readonly>
+
+            <label for="id">User Name</label>
+            <input type="text" id="username" readonly>
+
+            <!-- BUTTONS "UPDATE" & "DELETE" -->
+            <div class="ui-grid-a">
+                <div class="ui-block-a" style="padding-right: 5px;">
+                    <a href="#frm-update" data-rel="popup" data-position-to="window" data-transition="pop"
+                        class="ui-btn ui-corner-all ui-btn-b" id='btn-update'>Update</a>
+                </div>
+
+                <div class="ui-block-b" style="padding-left: 5px;">
+                    <a href="#frm-delete" data-rel="popup" data-position-to="window" data-transition="pop"
+                        class="ui-btn ui-corner-all ui-btn-b">Delete</a>
+                </div>
+            </div>
+
+            <form data-role="popup" id="frm-delete"
+                class="ui-content ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all" data-overlay-theme="a">
+                <div data-role="header">
+                    <h1 style="padding-top: 20px;">Delete Account?</h1>
+                </div>
+
+                <div role="main" class="ui-content">
+                    <h3>Are you sure you want to delete this account?</h3>
+                    <p>This action cannot be undone.</p>
+                    <br>
+
+                    <p><em>Please type "<strong>confirm delete</strong>" to delete this account.</em></p>
+                    <input type="text" id="txt-delete">
+
+                    <div style="text-align: right;">
+                        <a class="ui-btn ui-corner-all ui-btn-inline" data-rel="back" href="page-detail">Cancel</a>
+                        <button type="submit" class="ui-btn ui-corner-all ui-btn-inline ui-disabled"
+                            id="btn-delete">Delete</button>
+                    </div>
+                </div>
+            </form>
+
+            <form data-role="popup" id="frm-update"
+                class="ui-content ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all" data-overlay-theme="a">
+                <div class="ui-field-contain">
+                    <label for="id">Apartment Name</label>
+                    <input type="text" id="apartmentname">
+
+                    <label for="id">Apartment Address</label>
+                    <input type="text" id="address">
+
+                    <label for="id">Apartment City</label>
+                    <select id="city" required></select>
+
+                    <label for="id">Apartment District</label>
+                    <select id="district" required></select>
+
+                    <label for="id">Apartment Ward</label>
+                    <select id="ward" required></select>
+
+                    <label for="id">Apartment Type</label>
+                    <select id="type" required></select>
+
+                    <label for="id">Apartment Bedroom</label>
+                    <input id="bedroom" required>
+
+                    <label for="id">Date Added</label>
+                    <input type="datetime" id="dateadded" readonly>
+
+                    <label for="id">Monthly rent price</label>
+                    <input type="text" id="price" required>
+
+                    <label for="id">Furniture Type</label>
+                    <select id="furniture"></select>
+
+                    <label for="id">Note</label>
+                    <input type="text" id="note">
+
+                    <label for="id">User Name</label>
+                    <input type="text" id="username" required>
+                </div>
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a class="ui-btn ui-corner-all" data-rel="back" href="page-detail">Cancel</a>
+                    </div>
+
+                    <div class='ui-block-b'>
+                        <input type="submit" value="Update">
+                    </div>
+                </div>
+            </form>
+
+            <!-- COMMENT AREA -->
+            <form id="frm-comment" style="margin-top: 25px;">
+                <textarea id="txt-comment" placeholder="Please enter your comment here..."></textarea>
+                <div style="text-align: right;">
+                    <button type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b">Comment</button>
+                </div>
+
+                <div id="list-comment"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAGE "SEARCH" -->
+    <div data-role="page" id="page-search">
+        <div data-role="panel" id="mypanel" data-position="right" data-display="push">
+            <!-- panel content goes here -->
+            <h1 style="margin-bottom: 50px;">Menu</h1>
+            <ul data-role="listview" data-icon="false">
+                <li>
+                    <a href="#page-home">
+                        <i class='bx bxs-home' ></i>
+                        <span class="link_name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-create">
+                        <i class='bx bx-plus-medical'></i>
+                        <span class="link_name">Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-list">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">List Properties</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page-search">
+                        <i class='bx bx-search-alt' ></i>
+                        <span class="link_name">Search Properties</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="header" data-position="fixed">
+            <div style="justify-content: right; display: flex; margin-right: 5px;">
+                <a id="panel-open" style="border: none; background-color: transparent;"
+                    class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon">Open Panel</a>
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <h1>Search Information</h1>
+            <form id="frm-search" class='ui-content'>
+                <input type="text" placeholder="Apartment Name" id="apartmentname">
+                <input type="text" placeholder="Apartment Address" id="address">
+
+                <select id="city"></select>
+                <select id="district"></select>
+                <select id="ward"></select>
+
+                <select id="type" required></select>
+                <input id="bedroom" placeholder="Bedrooms">
+                <input type="number" placeholder="Monthly rent price" id="price">
+                <select id="furniture"></select>
+                <input type="text" placeholder="User Name" id="username">
+                <button type="submit">Search</button>
+                <p><input type="button" value="Refresh" onClick="window.location.reload();"></p>
+                <br>
+                <ul id="list-apartment" class='ui-content' data-role="listview" class="ui-nodisc-icon ui-alt-icon">
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/address.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
